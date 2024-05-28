@@ -11,6 +11,11 @@ const taskSchema = Schema({
     isComplete: {
         type: Boolean,
         required: true
+    },
+    author: {
+        type: Schema.Types.ObjectId, //스키마에서 제공하는 ObjectId 가져오는 메소드
+        required: true,
+        ref: "User" //User라는 ref를 참조한다
     }
 }, { timestamps: true });
 

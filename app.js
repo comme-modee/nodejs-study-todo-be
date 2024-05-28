@@ -6,9 +6,10 @@ const indexRouter = require('./routes/index');
 require('dotenv').config();
 const app = express();
 
-app.use(cors({
-    origin: 'https://main--comme-study-todo.netlify.app'
-}));
+// app.use(cors({
+//     origin: 'https://main--comme-study-todo.netlify.app'
+// }));
+app.use(cors());
 app.use(bodyParser.json());
 app.use('/api', indexRouter) //api라는 주소로 입장하면 indexRouter를 사용할것이라는 뜻.
 

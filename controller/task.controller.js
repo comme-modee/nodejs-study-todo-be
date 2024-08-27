@@ -16,8 +16,10 @@ taskController.createTask = async (req, res) => {
 
 taskController.getTask = async (req, res) => {
     try {
-                                                            //populate: author가 참조하고 있는 오브젝트로 replace
-        const taskList = await Task.find({}).select('-__v').populate('author')//조건 없이 Task의 모든 List를 불러와주세요.
+        const taskList = await Task.find({})
+            .select('-__v')
+            .populate('author')//조건 없이 Task의 모든 List를 불러와주세요.
+            .sort({ updatedAt: -1 })
         res.status(200).json({ status: 'ok', data: taskList });
     } catch (error) {
         res.status(400).json({ status: 'fail', error: error });
